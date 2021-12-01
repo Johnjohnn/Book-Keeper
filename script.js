@@ -16,3 +16,4 @@ function showModal () {
 // Modal Even Listeners 
 
 modalShow.addEventListener("click", showModal);
+modalClose.addEventListener("click", () => modal.classList.remove("show-modal"));
