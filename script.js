@@ -18,3 +18,15 @@ function showModal () {
 modalShow.addEventListener("click", showModal);
 modalClose.addEventListener("click", () => modal.classList.remove("show-modal"));
 window.addEventListener("click", (e) => (e.target === modal ? modal.classList.remove("show-modal") : false))
+
+
+// Handle Data From Form 
+function storeBookmark(e){
+    e.preventDefault();
+   const nameValue = websiteNameEl.value;
+   let urlValue = websiteUrlEl.value 
+   console.log(nameValue, urlValue)
+}
+
+// Even Listener 
+bookmarkForm.addEventListener("submit", storeBookmark)
