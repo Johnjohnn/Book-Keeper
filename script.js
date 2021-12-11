@@ -37,7 +37,7 @@ function validate(nameValue, urlValue) {
 
     // Valid 
     return true;
-    //Fetch bookmarks 
+}   //Fetch bookmarks 
 function fetchBookmarks () {
 if (localStorage.getItem("bookmarks")) {
     bookmarks = JSON.parse(localStorage.getItem("bookmarks"))
@@ -49,7 +49,7 @@ if (localStorage.getItem("bookmarks")) {
         url: "https://facebook.com",
     },
    ];
-    localStorage.set("bookmarks" JSON.stringify(bookmarks));
+    localStorage.setItem("bookmarks" ,JSON.stringify(bookmarks));
 }
   console.log()
 }
@@ -72,7 +72,7 @@ function storeBookmark(e){
     const bookmark = {
         name: nameValue, 
         url: urlValue,   
-    }
+    };
     bookmarks.push(bookmark);
     console.log(JSON.stringify(bookmarks));
     localStorage.setItem("bookmarks",JSON.stringify(bookmarks))
@@ -82,3 +82,7 @@ function storeBookmark(e){
 
 // Even Listener 
 bookmarkForm.addEventListener("submit", storeBookmark)
+
+
+// on load , Fetch Bookmarks 
+fetchBookmarks();
