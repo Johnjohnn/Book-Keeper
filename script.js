@@ -58,11 +58,14 @@ function buildBookmarks() {
         favicon.setAttribute("src",`https://s2.googleusercontent.com/s2/favicons?domain=${url}`);
         favicon.setAttribute("alt", "Favicon");
         // link 
-        const link = domcument.createElement("a");
+        const link = document.createElement("a");
         link.setAttribute("href", `${url}`);
         link.setAttribute("target", "_blank");
         link.textContent = name;
-        // Append 
+        // Append to bookmark container 
+        Linkinfo.append(favicon, link);
+        item.append(closeIcon, Linkinfo);
+        bookmarksContainer.appendChild(item);
     }) 
 }
 
