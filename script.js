@@ -40,6 +40,8 @@ function validate(nameValue, urlValue) {
 }   //Fetch bookmarks 
 // Build Bookmakrs DOM 
 function buildBookmarks() {
+    // Remove all bookmark elements
+    bookmarksContainer.textContent = "";
     // Build Items 
     bookmarks.forEach((bookmark) => {
         const { name, url} = bookmark;
@@ -81,12 +83,22 @@ if (localStorage.getItem("bookmarks")) {
         url: "https://facebook.com",
     },
    ];
-    localStorage.setItem("bookmarks" ,JSON.stringify(bookmarks));
+    localStorage.setItem("bookmarks",JSON.stringify(bookmarks));
 }
-  buildBookmarks();
+buildBookmarks();
 }
 
-
+// Delete Bookmark 
+function deleteBookmark(url) {
+  bookmarks.forEach((bookmark, i ) => {
+   if (bookmark.url === url) {
+       bookmarks.splice(i, 1);
+   }
+  });
+  // Update bookmarks array in localstore , re-populate DOM 
+  localStorage.setItem("bookmarks", JSON.stringify(bookmarks));
+  fetchBookmarks();
+}
 
 // Handle Data From Form 
 function storeBookmark(e){
@@ -106,7 +118,6 @@ function storeBookmark(e){
         url: urlValue,   
     };
     bookmarks.push(bookmark);
-    console.log(JSON.stringify(bookmarks));
     localStorage.setItem("bookmarks",JSON.stringify(bookmarks))
     bookmarkForm.reset();
     websiteNameEl.focus();
